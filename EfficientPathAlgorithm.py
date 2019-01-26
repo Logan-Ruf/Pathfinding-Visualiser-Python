@@ -3,9 +3,6 @@ import pygame, sys, time, numpy, random
 
 from pygame.locals import *
 
-
-
-
 #global parameters
 TILESIZE = 20
 MAPWIDTH = 20
