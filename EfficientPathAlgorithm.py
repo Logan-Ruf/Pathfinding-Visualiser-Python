@@ -36,7 +36,6 @@ class Tile():
         self.newColor((200,200,200))
         self.draw()
 
-
 class Grid:
     #This call will be called to draw the tiles
     def __init__(self, xLen = 10, yLen = 10, tileSize = 20):
