@@ -1,3 +1,2 @@
 #__pycache__ directories
-*/__pycache__/
-*/classes/__pycache__/
+__pycache__/
