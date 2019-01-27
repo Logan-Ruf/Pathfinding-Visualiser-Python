@@ -23,70 +23,26 @@ class PathFinder2D:
             deltaY = self.goalPos[1] - self.startPos[1]
             deltaXInc = abs(deltaX)
             deltaYInc = abs(deltaY)
-
             while self.currentGridPos != self.goalPos:
-                """if abs(deltaY) > abs(deltaX) and deltaYInc and deltaXInc:
-                    divTest = deltaYInc % (abs(deltaX) + 1)
-                    print("yfunc")
-                    if divTest == 0:
-                        print("int")
-                        self.currentGridPos[0] += self.safeDivZero(deltaX, abs(deltaX))
+                if abs(deltaX) >= abs(deltaY):
+                    if deltaXInc > deltaYInc * abs(deltaX) / (abs(deltaY) + 1):
+                        self.currentGridPos[0] += deltaX // abs(deltaX)
                         self.bestPath.append([self.currentGridPos[0], self.currentGridPos[1]])
                         deltaXInc -= 1
-                        self.currentGridPos[1] += self.safeDivZero(deltaY, abs(deltaY))
+                    elif deltaXInc <= deltaYInc * abs(deltaX) / (abs(deltaY) + 1):
+                        self.currentGridPos[1] += deltaY // abs(deltaY)
                         self.bestPath.append([self.currentGridPos[0], self.currentGridPos[1]])
                         deltaYInc -= 1
-                    else:
-                        print("not int")
-                        self.currentGridPos[1] += self.safeDivZero(deltaY, abs(deltaY))
+                elif abs(deltaX) < abs(deltaY):
+                    if deltaYInc > deltaXInc * abs(deltaY) / (abs(deltaX) + 1):
+                        self.currentGridPos[1] += deltaY // abs(deltaY)
                         self.bestPath.append([self.currentGridPos[0], self.currentGridPos[1]])
                         deltaYInc -= 1
-                elif abs(deltaX) > abs(deltaY) and deltaYInc and deltaXInc:
-                    divTest = deltaXInc % (abs(deltaY) + 1)
-                    print("xfunc")
-                    if divTest == 0:
-                        print("int")
-                        self.currentGridPos[0] += self.safeDivZero(deltaX, abs(deltaX))
-                        self.bestPath.append([self.currentGridPos[0], self.currentGridPos[1]])
-                        deltaXInc -= 1
-                        self.currentGridPos[1] += self.safeDivZero(deltaY, abs(deltaY))
-                        self.bestPath.append([self.currentGridPos[0], self.currentGridPos[1]])
-                        deltaYInc -= 1
-                    else:
-                        print("not int")
-                        self.currentGridPos[0] += self.safeDivZero(deltaX, abs(deltaX))
-                        self.bestPath.append([self.currentGridPos[0], self.currentGridPos[1]])
-                        deltaXInc -= 1
-                elif deltaXInc and not deltaYInc:
-                    self.currentGridPos[0] += self.safeDivZero(deltaX, abs(deltaX))
-                    self.bestPath.append([self.currentGridPos[0], self.currentGridPos[1]])
-                    deltaXInc -= 1
-                elif deltaYInc and not deltaXInc:
-                    self.currentGridPos[1] += self.safeDivZero(deltaY, abs(deltaY))
-                    self.bestPath.append([self.currentGridPos[0], self.currentGridPos[1]])
-                    deltaYInc -= 1"""
-
-                if not deltaXInc and deltaYInc:
-                    self.currentGridPos[1] += deltaY // abs(deltaY)
-                    self.bestPath.append([self.currentGridPos[0], self.currentGridPos[1]])
-                    deltaYInc -= 1
-                if not deltaYInc and deltaXInc:
-                    self.currentGridPos[0] += deltaX // abs(deltaX)
-                    self.bestPath.append([self.currentGridPos[0], self.currentGridPos[1]])
-                    deltaXInc -= 1
-                if deltaYInc and deltaXInc:
-                    minInc = min(abs(deltaX), abs(deltaY)) / max(abs(deltaX), abs(deltaY))
-                    if deltaXInc / max(deltaXInc, abs(deltaYInc)) >= minInc:
+                    elif deltaYInc <= deltaXInc * abs(deltaY) / (abs(deltaX) + 1):
                         self.currentGridPos[0] += deltaX // abs(deltaX)
                         self.bestPath.append([self.currentGridPos[0], self.currentGridPos[1]])
                         deltaXInc -= 1
 
-                    if deltaYInc / max(deltaXInc, deltaYInc) >= minInc:
-                        self.currentGridPos[1] += deltaY // abs(deltaY)
-                        self.bestPath.append([self.currentGridPos[0], self.currentGridPos[1]])
-                        deltaYInc -= 1
-
-                print("done")
         else:
             pass
 
