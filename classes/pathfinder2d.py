@@ -3,26 +3,33 @@ import time, pygame
 class PathFinder2D:
 
     def __init__(self, PositionData):
+        #references to position variables
         self.PositionData = PositionData
         self.startPos = self.PositionData.startPos
         self.goalPos = self.PositionData.goalPos
         self.obstaclesPos = self.PositionData.obstaclesPos
         self.currentGridPos = self.PositionData.currentGridPos
+        #stores the coordinates of the shortest path from the start tile to the goal tile
         self.bestPath = []
     #finds the shortest path from the start tile to the goal tile
     def pathAlgorithm(self):
-
+        #refresh position variables
         self.startPos = self.PositionData.startPos
         self.goalPos = self.PositionData.goalPos
         self.obstaclesPos = self.PositionData.obstaclesPos
         self.currentGridPos = self.startPos
+        #reset best path
         self.bestPath = []
 
-        if (self.obstaclesPos == [] and self.startPos != [] and self.goalPos != []):
+        #algorithm for when there are no obstacles
+        if (self.obstaclesPos == []):
+            #original difference between goal and start tiles
             deltaX = self.goalPos[0] - self.startPos[0]
             deltaY = self.goalPos[1] - self.startPos[1]
+            #current difference between goal and start tiles
             deltaXInc = abs(deltaX)
             deltaYInc = abs(deltaY)
+            #checks if current position is equal to goal position
             while self.currentGridPos != self.goalPos:
                 if abs(deltaX) >= abs(deltaY):
                     if deltaXInc > deltaYInc * abs(deltaX) / (abs(deltaY) + 1):
@@ -43,16 +50,6 @@ class PathFinder2D:
                         self.bestPath.append([self.currentGridPos[0], self.currentGridPos[1]])
                         deltaXInc -= 1
 
+        #algorithm for when there are obstacles
         else:
             pass
-
-    def safeDivZero(self, n, d):
-        if d == 0:
-            return 0
-        return n // d
-#deff beg and end coordinate
-# divide x and y diff by max(x , y)
-# 2,2 / 2 = 1,1
-# 32, 2 / 32 = 1 , 0.005
-# 6 , 2 / 6 = 1 , .333
-    #4, 2 = 1 , .5
