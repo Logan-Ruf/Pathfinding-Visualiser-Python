@@ -20,10 +20,17 @@ class MapMaker:
 
     def setStart(self, pos):
         if self.startTile != (-1,-1):
+<<<<<<< HEAD
             #reset current tile
             self.grid.resetTile(self.startTile)
         #use pos to set new tile as tart
         self.grid.tiles[pos[0]][pos[1]].setStart()
+=======
+            self.grid.resetTile(self.startTile)
+        #use pos to set new tile as tart
+        print(self.grid.tiles)
+        self.grid.tiles[pos[0],pos[1]].setStart()
+>>>>>>> 4307e1e55be4021c68fd9b3c2e4b02bab631ddd6
         self.startTile = pos
 
     def setEnd(self, pos):
@@ -31,7 +38,11 @@ class MapMaker:
             #reset current tile
             self.grid.resetTile(self.endTile)
         #use pos to set new tile as end
+<<<<<<< HEAD
         self.grid.tiles[pos[0]][pos[1]].setEnd()
+=======
+        self.grid.tiles[pos[0],pos[1]].setEnd()
+>>>>>>> 4307e1e55be4021c68fd9b3c2e4b02bab631ddd6
         self.endTile = pos
 
 class PathFinder2D:
