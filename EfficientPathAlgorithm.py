@@ -35,19 +35,11 @@ while True:
                 hasRun = False
             if event.button == 1:
                 #Left Click
-<<<<<<< HEAD
                 mapMaker.setStart(grid.mouseToTile(event.pos))
                 pass
             if event.button == 3:
                 #Right Click
                 mapMaker.setEnd(grid.mouseToTile(event.pos))
-=======
-                mapMaker.setStart(event.pos)
-                pass
-            if event.button == 3:
-                #Right Click
-                mapMaker.setEnd(event.pos)
->>>>>>> 4307e1e55be4021c68fd9b3c2e4b02bab631ddd6
                 pass
             if event.button == 2:
                 #Middle Click
