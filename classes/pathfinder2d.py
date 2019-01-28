@@ -50,6 +50,10 @@ class PathFinder2D:
                         self.bestPath.append([self.currentGridPos[0], self.currentGridPos[1]])
                         deltaXInc -= 1
 
-        #algorithm for when there are obstacles
+
+                        #algorithm for when there are obstacles
         else:
             pass
+
+
+        return self.bestPath

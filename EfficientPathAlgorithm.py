@@ -11,8 +11,6 @@ pygame.init()
 #create grid for the first time with variables at the top of the file
 grid = Grid(MAPWIDTH, MAPHEIGHT, TILESIZE)
 pathPosition1 = PositionData(grid)
-pathFinder1 = PathFinder2D(pathPosition1)
-pathRender1 = PathRender(grid)
 hasRun = False
 #main loop
 while True:
@@ -41,8 +39,8 @@ while True:
         #Escape to exit the program
         if event.type == KEYDOWN:
             if event.key == K_RETURN:
-                pathFinder1.pathAlgorithm()
-                pathRender1.pathRender(pathFinder1.bestPath)
+                pathPosition1.findPath()
+                pathPosition1.traversePath()
                 hasRun = True
             if event.key == K_DELETE:
                 pathPosition1.clearGrid()

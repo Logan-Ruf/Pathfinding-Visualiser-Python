@@ -1,6 +1,5 @@
 from classes.grid import *
 from classes.pathfinder2d import *
-from classes.pathrender import *
 
 class PositionData:
 
@@ -10,6 +9,7 @@ class PositionData:
         self.goalPos = []
         self.obstaclesPos = []
         self.currentGridPos = []
+        self.bestPath = []
 
     #changes the position of the start tile
     def changeStartTile(self, pos):
@@ -48,3 +48,16 @@ class PositionData:
         self.startPos = []
         self.goalPos = []
         self.obstaclesPos = []
+        self.bestPath = []
+
+    #uses pathfinder class to get a path
+    def findPath(self):
+        finder = PathFinder2D(self)
+        self.bestPath = finder.pathAlgorithm()
+
+    #traverses path
+    def traversePath(self):
+        for pos in self.bestPath:
+            self.Grid.changeColor(pos, (0,0,0))
+            time.sleep(.01)
+            pygame.display.update()
