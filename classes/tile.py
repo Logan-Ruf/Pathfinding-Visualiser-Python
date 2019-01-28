@@ -31,7 +31,7 @@ class Tile():
         self.newColor((200,200,200))
         self.draw()
 
-#setTYPE methods reset tile first then set attributes to be the right type
+
     def toggleWall(self):
         #checks to see if the block is currently a wall
         #if currently a start or end store that in VAR oldWall
@@ -51,6 +51,8 @@ class Tile():
         self.newColor((200, 0, 0))
         #return nome of oldWall if there was any
         return oldWall
+
+#setTYPE methods reset tile first then set attributes to be the right type
 
     def setStart(self):
         self.reset()

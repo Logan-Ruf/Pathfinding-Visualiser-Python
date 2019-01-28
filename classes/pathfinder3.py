@@ -38,10 +38,8 @@ class MapMaker:
         oldWall = self.grid.tiles[pos[0]][pos[1]].toggleWall()
         if(oldWall == 'start'):
             self.startTile = (-1, -1)
-            print(self.startTile)
         elif(oldWall == 'end'):
             self.endTile = (-1, -1)
-            print(self.endTile)
 
 class PathFinder2D:
 
