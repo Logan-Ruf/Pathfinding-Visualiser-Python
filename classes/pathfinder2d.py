@@ -33,11 +33,7 @@ class PathFinder2D:
             while self.currentGridPos != self.goalPos:
                 if abs(deltaX) >= abs(deltaY):
                     if deltaXInc > deltaYInc * abs(deltaX) / (abs(deltaY) + 1):
-                        print("currentGridPos = ", self.currentGridPos)
-                        print("deltaX = ", deltaX)
-                        print("abs(deltaX) = ", abs(deltaX))
-                        self.currentGridPos[0] = self.currentGridPos[0] + deltaX // abs(deltaX)
-                        #self.currentGridPos[0] += deltaX // abs(deltaX)
+                        self.currentGridPos[0] += deltaX // abs(deltaX)
                         self.bestPath.append([self.currentGridPos[0], self.currentGridPos[1]])
                         deltaXInc -= 1
                     elif deltaXInc <= deltaYInc * abs(deltaX) / (abs(deltaY) + 1):
