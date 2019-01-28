@@ -31,6 +31,7 @@ class Tile():
         self.newColor((200,200,200))
         self.draw()
 
+#setTYPE methods reset tile first then set attributes to be the right type
     def setWall(self):
         self.reset()
         self.isWall = True

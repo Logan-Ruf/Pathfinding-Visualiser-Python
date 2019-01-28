@@ -44,8 +44,11 @@ class Grid:
             for tile in row:
                 tile.reset()
 
+    def resetTile(self, pos):
+        self.tiles[pos[0],pos[1]].reset()
+
     def changeColor(self, pos, *rgb):
-        self.tiles[pos[0]][pos[1]].newColor(rgb)
+        self.tiles[pos[0],pos[1]].newColor(rgb)
 
     #creates a random rgb color
     def randomColor(self):
