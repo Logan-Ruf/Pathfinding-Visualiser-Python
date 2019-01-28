@@ -31,19 +31,17 @@ while True:
         if event.type == MOUSEBUTTONDOWN:
             print(event.pos)
             if hasRun == True:
-                #reset grid
+                grid.reset()
                 hasRun = False
             if event.button == 1:
                 #Left Click
                 mapMaker.setStart(grid.mouseToTile(event.pos))
-                pass
             if event.button == 3:
                 #Right Click
                 mapMaker.setEnd(grid.mouseToTile(event.pos))
-                pass
             if event.button == 2:
                 #Middle Click
-                pass
+                mapMaker.toggleWall(grid.mouseToTile(event.pos))
 
 
         #press Enter to start the algorith, Delete to clear the grid, or
@@ -53,7 +51,7 @@ while True:
                 #start pathfinding
                 hasRun = True
             if event.key == K_DELETE:
-                #clear grid
+                grid.reset()
                 pass
             if event.key == K_ESCAPE:
                 pygame.quit()

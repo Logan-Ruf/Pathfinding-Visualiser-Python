@@ -32,10 +32,25 @@ class Tile():
         self.draw()
 
 #setTYPE methods reset tile first then set attributes to be the right type
-    def setWall(self):
-        self.reset()
+    def toggleWall(self):
+        #checks to see if the block is currently a wall
+        #if currently a start or end store that in VAR oldWall
+        oldWall = None
+        if(self.isWall == True):
+            self.reset()
+            return None
+            #stop if you are toggling off the wall status
+        elif(self.isStart == True):
+            self.reset()
+            oldWall = 'start'
+        elif(self.isEnd == True):
+            self.reset()
+            oldWall = 'end'
+        #set to being a wall
         self.isWall = True
-        self.newColor((255, 100, 100))
+        self.newColor((200, 0, 0))
+        #return nome of oldWall if there was any
+        return oldWall
 
     def setStart(self):
         self.reset()
