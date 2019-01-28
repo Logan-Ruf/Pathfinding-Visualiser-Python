@@ -13,21 +13,27 @@ class PositionData:
 
     #changes the position of the start tile
     def changeStartTile(self, pos):
+        #if there is a current tile reset it's color
+        if self.startPos != []:
+            self.clearTile(self.startPos)
+        self.Grid.tiles[pos[0]][pos[1]].newColor((0,255,0))
+        self.startPos = list(pos)
+
+        '''
         if self.startPos == []:
             self.startPos.append(pos[0])
             self.startPos.append(pos[1])
         self.clearTile(self.startPos)
         self.Grid.tiles[pos[0]][pos[1]].newColor((0,255,0))
         self.startPos = [pos[0], pos[1]]
-
+        '''
     #changes the position of the goal tile
     def changeGoalTile(self, pos):
-        if self.goalPos == []:
-            self.goalPos.append(pos[0])
-            self.goalPos.append(pos[1])
-        self.clearTile(self.goalPos)
+        #if there is a current tile reset it's color
+        if self.goalPos != []:
+            self.clearTile(self.goalPos)
         self.Grid.changeColor(pos, (0, 0, 255))
-        self.goalPos = [pos[0], pos[1]]
+        self.goalPos = list(pos)
 
     #add/remove obstacle tiles
     def changeObstacleTile(self, pos):
