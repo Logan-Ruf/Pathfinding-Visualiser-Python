@@ -44,6 +44,9 @@ class Grid:
             for tile in row:
                 tile.reset()
 
+    def resetTile(self, pos):
+        self.tiles[pos[0]][pos[1]].reset()
+
     def changeColor(self, pos, *rgb):
         self.tiles[pos[0]][pos[1]].newColor(rgb)
 
@@ -54,11 +57,10 @@ class Grid:
 
     #takes in grid coordinate and changed that tile to a random color
     def randomTileColor(self, pos):
-        self.changeColor(randomColor())
+        self.changeColor(pos, randomColor())
 
     #gets mouse position and turns into a grid coordinate based on the tile size
-    def mouseToTile(self):
-        pos = pygame.mouse.get_pos()
+    def mouseToTile(self, pos):
         xCor = int(pos[0] / self.tileSize)
         yCor = int(pos[1] / self.tileSize)
         tile = (xCor, yCor)

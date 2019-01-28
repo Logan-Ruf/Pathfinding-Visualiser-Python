@@ -1,4 +1,8 @@
-from classes.positiondata import *
+import pygame
+#import classes.tile, classes.grid, classes.pathfinder3
+from classes.tile import *
+from classes.grid import *
+from classes.pathfinder3 import *
 
 #global parameters
 TILESIZE = 20
@@ -10,7 +14,9 @@ pygame.init()
 
 #create grid for the first time with variables at the top of the file
 grid = Grid(MAPWIDTH, MAPHEIGHT, TILESIZE)
-pathPosition1 = PositionData(grid)
+mapMaker = MapMaker(grid)
+pathFinder = PathFinder2D(grid.tiles)
+
 hasRun = False
 #main loop
 while True:
@@ -23,31 +29,32 @@ while True:
         #when you click the mouse button get the mouse position and set the tile
         #underneath it to goal, start, or obstacle
         if event.type == MOUSEBUTTONDOWN:
+            print(event.pos)
             if hasRun == True:
-                pathPosition1.clearGrid()
+                #reset grid
                 hasRun = False
             if event.button == 1:
-                pathPosition1.changeStartTile(grid.mouseToTile())
-                print("\nStart Position:", pathPosition1.startPos, "\n")
+                #Left Click
+                mapMaker.setStart(grid.mouseToTile(event.pos))
+                pass
             if event.button == 3:
-                pathPosition1.changeGoalTile(grid.mouseToTile())
-                print("\nGoal Position:", pathPosition1.goalPos, "\n")
+                #Right Click
+                mapMaker.setEnd(grid.mouseToTile(event.pos))
+                pass
             if event.button == 2:
-                pathPosition1.changeObstacleTile(grid.mouseToTile())
-                print("\nObstacle Positions:", pathPosition1.obstaclesPos, "\n")
+                #Middle Click
+                pass
+
+
         #press Enter to start the algorith, Delete to clear the grid, or
         #Escape to exit the program
         if event.type == KEYDOWN:
             if event.key == K_RETURN:
-                pathPosition1.findPath()
-                pathPosition1.traversePath()
+                #start pathfinding
                 hasRun = True
             if event.key == K_DELETE:
-                pathPosition1.clearGrid()
-                print("\nGrid Cleared\n")
-                print("Start Position:", pathPosition1.startPos)
-                print("Goal Position:", pathPosition1.goalPos)
-                print("Obstacle Positions:", pathPosition1.obstaclesPos, "\n")
+                #clear grid
+                pass
             if event.key == K_ESCAPE:
                 pygame.quit()
                 sys.exit()
