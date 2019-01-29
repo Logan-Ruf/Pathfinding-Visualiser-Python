@@ -34,8 +34,10 @@ class MapMaker:
         self.grid.tiles[pos[0]][pos[1]].setEnd()
         self.endTile = pos
 
+    #toggle the wall attribute and track if the user just replaced a start or end block
     def toggleWall(self, pos):
         oldWall = self.grid.tiles[pos[0]][pos[1]].toggleWall()
+        #if toggleWall method on tile returns start or end reset those variables to default
         if(oldWall == 'start'):
             self.startTile = (-1, -1)
         elif(oldWall == 'end'):
