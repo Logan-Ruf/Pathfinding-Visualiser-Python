@@ -1,4 +1,4 @@
-import pygame
+import pygame, time
 #import classes.tile, classes.grid, classes.pathfinder3
 from classes.tile import *
 from classes.grid import *
@@ -29,7 +29,6 @@ while True:
         #when you click the mouse button get the mouse position and set the tile
         #underneath it to goal, start, or obstacle
         if event.type == MOUSEBUTTONDOWN:
-            print(event.pos)
             if hasRun == True:
                 grid.reset()
                 hasRun = False
@@ -49,6 +48,9 @@ while True:
         if event.type == KEYDOWN:
             if event.key == K_RETURN:
                 #start pathfinding
+                isRunning = True
+                print("Starting Algorithm")
+                pathFinder.pathAlgorithm(mapMaker.startTile, mapMaker.endTile)
                 hasRun = True
             if event.key == K_DELETE:
                 grid.reset()

@@ -1,3 +1,4 @@
+import numpy, pygame, time
 '''
 Requirements for this algorithm
 
@@ -43,10 +44,31 @@ class MapMaker:
         elif(oldWall == 'end'):
             self.endTile = (-1, -1)
 
+    def okToStart(self):
+        if self.startTile == (-1, -1) or self.endTile == (-1, -1):
+            return False
+        else:
+            return True
+
 class PathFinder2D:
 
     def __init__ (self, gridArray):
         self.gridArray = gridArray
 
-    def pathAlgorithm(self):
-        pass
+    def pathAlgorithm(self, startPos, endPos):
+        currentPos = startPos
+
+        while currentPos != endPos:
+            #find the difference of currentPos and endPos
+            movement = (endPos[0] - currentPos[0], endPos[1] - currentPos[1])
+            #normailze the difference to a max of 1
+            maxInt = max(abs(movement[0]), abs(movement[1]))
+            movement = (round(movement[0]/maxInt), round(movement[1]/maxInt))
+            #add movement to find current tile
+            currentPos = (currentPos[0]+movement[0],currentPos[1]+movement[1])
+
+            #Change color of current tile and update screen
+            self.gridArray[currentPos[0]][currentPos[1]].newColor((100,100,100))
+            pygame.display.update()
+            #Wait a tenth of a second for the humans
+            time.sleep(.1)
