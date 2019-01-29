@@ -47,9 +47,8 @@ while True:
         #Escape to exit the program
         if event.type == KEYDOWN:
             if event.key == K_RETURN:
-                #start pathfinding
                 isRunning = True
-                print("Starting Algorithm")
+                #start pathfinding
                 pathFinder.pathAlgorithm(mapMaker.startTile, mapMaker.endTile)
                 hasRun = True
             if event.key == K_DELETE:
