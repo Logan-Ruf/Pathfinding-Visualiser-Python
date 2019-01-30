@@ -57,3 +57,21 @@ class PathFinder2D:
 
 
         return self.bestPath
+
+    #Path algorith2 is self-suffcient. Just pass in required variables
+    #and it will find the path while updating tiles
+    def pathAlgorithm2(self, startPos, endPos, gridArray):
+        currentPos = startPos
+        while currentPos != endPos:
+            #find the difference of currentPos and endPos
+            movement = (endPos[0] - currentPos[0], endPos[1] - currentPos[1])
+            #normailze the difference to a max of 1
+            maxInt = max(abs(movement[0]), abs(movement[1]))
+            movement = (round(movement[0]/maxInt), round(movement[1]/maxInt))
+            #add movement to find current tile
+            currentPos = (currentPos[0]+movement[0],currentPos[1]+movement[1])
+            #Change color of current tile and update screen
+            gridArray[currentPos[0]][currentPos[1]].newColor((100,100,100))
+            pygame.display.update()
+            #Wait a tenth of a second for the humans
+            time.sleep(.1)

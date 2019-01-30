@@ -10,7 +10,7 @@ Stores data like distance from start on current path and other data in tile
 each node needs to store its distance from start from path
 its absolute distance from end
 which sides have walls next to them
-'''
+
 class MapMaker:
 
     def __init__(self, grid):
@@ -54,7 +54,7 @@ class PathFinder2D:
     def __init__ (self, gridArray):
         self.gridArray = gridArray
 
-    def pathAlgorithm(self, startPos, endPos):
+    def pathAlgorithm2(self, startPos, endPos, gridArray):
         currentPos = startPos
         while currentPos != endPos:
             #find the difference of currentPos and endPos
@@ -65,7 +65,8 @@ class PathFinder2D:
             #add movement to find current tile
             currentPos = (currentPos[0]+movement[0],currentPos[1]+movement[1])
             #Change color of current tile and update screen
-            self.gridArray[currentPos[0]][currentPos[1]].newColor((100,100,100))
+            gridArray[currentPos[0]][currentPos[1]].newColor((100,100,100))
             pygame.display.update()
             #Wait a tenth of a second for the humans
             time.sleep(.1)
+'''

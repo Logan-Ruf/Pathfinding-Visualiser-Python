@@ -2,7 +2,8 @@ import pygame, time
 #import classes.tile, classes.grid, classes.pathfinder3
 from classes.tile import *
 from classes.grid import *
-from classes.pathfinder3 import *
+from classes.pathfinder2d import *
+from classes.positiondata import *
 
 #global parameters
 TILESIZE = 20
@@ -14,8 +15,8 @@ pygame.init()
 
 #create grid for the first time with variables at the top of the file
 grid = Grid(MAPWIDTH, MAPHEIGHT, TILESIZE)
-mapMaker = MapMaker(grid)
-pathFinder = PathFinder2D(grid.tiles)
+mapMaker = PositionData(grid)
+pathFinder = PathFinder2D(mapMaker)
 
 hasRun = False
 #main loop
@@ -49,7 +50,9 @@ while True:
             if event.key == K_RETURN:
                 isRunning = True
                 #start pathfinding
-                pathFinder.pathAlgorithm(mapMaker.startTile, mapMaker.endTile)
+                #pathFinder.pathAlgorithm2(mapMaker.startTile, mapMaker.endTile, grid.tiles)
+                mapMaker.findPath(pathFinder)
+                mapMaker.traversePath()
                 hasRun = True
             if event.key == K_DELETE:
                 grid.reset()
