@@ -1,0 +1,31 @@
+To Do List - In order of most important to least important.
+
+
+Merge pathfinder2d and pathfinder3 Files:
+
+        Merge PathFinder2D and PathFinder2D Classes(URGENT):
+
+                Add a new method to the PathFinder2D Class to represent your
+                algorithm. Try to name it after whatever algorithm you will be
+                mimicking. Make sure there are no duplicate class names and that
+                every function can be accessed from a positiondata object.
+
+        Merge MapMaker and PositionData Classes:
+
+                PositonData already has methods to change start, end, and wall
+                tiles. Add whatever code you need to each of those methods for your
+                pathFinder method to work properly.
+
+
+Set up imports in the following order:
+
+        tile >> grid >> positiondata
+        pathfinder2d >> positiondata
+        positiondata >> main
+
+        I believe python can handle duplicate imports so if you
+        need the same module in tile and pathfinder2d go ahead and import it
+        twice. Main should only have positiondata imported to it and any other
+        modules needed should be imported through one of the other class files.
+
+Add more things to the To Do list. Lel

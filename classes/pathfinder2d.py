@@ -51,7 +51,7 @@ class PathFinder2D:
                         deltaXInc -= 1
 
 
-                        #algorithm for when there are obstacles
+        #algorithm for when there are obstacles
         else:
             pass
 
