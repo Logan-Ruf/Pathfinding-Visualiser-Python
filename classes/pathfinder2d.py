@@ -75,3 +75,61 @@ class PathFinder2D:
             pygame.display.update()
             #Wait a tenth of a second for the humans
             time.sleep(.1)
+
+    def dikjstra(self, startPos, endPos, gridArray, width, height):
+        '''
+        Welp, it's time to see if I can implement the famous Dijkstra's algorthm
+
+        How this should work:
+        Dijkstra's algorith works by always checking the closest path.
+        As soon as the end of the found it will always be the closest path.
+
+        how the code should work.
+
+        have an array that stores grid coordinates
+
+        start the algorith
+        check all neighboring positions
+        if
+        '''
+        gridArray[startPos[0]][startPos[1]].distance = 0
+
+        currentPos = startPos
+        unvisitedNodes = []
+
+        while True:
+            x, y = currentPos
+            currentDistance = gridArray[x][y].distance + 1
+            #make sure neighboring tiles are in bounds
+            #then if at shortest distance add it to unvisitedNodes
+            if x - 1 >= 0:
+                print("RUN 1")
+                if gridArray[x - 1][y].isWall != True:
+                    print("RUN 2")
+                    isShorter = False
+                    isShorter = gridArray[x - 1][y].isClosest(currentDistance, (x,y))
+                    if isShorter:
+                        print("RUN 3")
+                        unvisitedNodes.append((x-1,y))
+            if x + 1 < width:
+                if gridArray[x + 1][y].isWall != True:
+                    isShorter = False
+                    isShorter = gridArray[x + 1][y].isClosest(currentDistance, (x,y))
+                    if isShorter:
+                        unvisitedNodes.append((x+1,y))
+            if y - 1 >= 0:
+                if gridArray[x][y - 1].isWall != True:
+                    isShorter = False
+                    isShorter = gridArray[x][y - 1].isClosest(currentDistance, (x,y))
+                    if isShorter:
+                        unvisitedNodes.append((x,y-1))
+            if y + 1 < height:
+                if gridArray[x][y + 1].isWall != True:
+                    isShorter = False
+                    isShorter = gridArray[x][y + 1].isClosest(currentDistance, (x,y))
+                    if isShorter:
+                        unvisitedNodes.append((x,y+1))
+
+            pygame.display.update()
+            time.sleep(.05)
+            currentPos = unvisitedNodes.pop(0)

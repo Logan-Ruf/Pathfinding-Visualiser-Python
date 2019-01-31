@@ -14,6 +14,9 @@ class Tile():
         self.isEnd = False
         self.isWall = False
         self.DISPLAYSURF = DISPLAYSURF
+        #Dijkstra requirements
+        self.distance = None
+        self.parent= None
 
     #call pygame draw rectangle function
     def draw(self):
@@ -63,3 +66,21 @@ class Tile():
         self.reset()
         self.isEnd = True
         self.newColor((0, 0, 255))
+
+#dikjstra requirements
+    def isClosest(self, testDistance, testParent):
+        if self.distance != None:
+            if testDistance < self.distance:
+                self.distance = testDistance
+                self.parent = testParent
+                print("TILE COLOR CHANGED")
+                self.newColor((5*testDistance,10*testDistance,255-testDistance*10))
+                return True
+            else:
+                return False
+        else:
+            self.distance = testDistance
+            self.parent = testParent
+            print("TILE COLOR CHANGED")
+            self.newColor((5*testDistance,10*testDistance,255-testDistance*10))
+            return True

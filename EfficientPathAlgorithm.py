@@ -7,8 +7,8 @@ from classes.positiondata import *
 
 #global parameters
 TILESIZE = 20
-MAPWIDTH = 20
-MAPHEIGHT = 20
+MAPWIDTH = 40
+MAPHEIGHT = 40
 
 #initialize pygame
 pygame.init()
@@ -50,9 +50,13 @@ while True:
             if event.key == K_RETURN:
                 isRunning = True
                 #start pathfinding
+
                 #pathFinder.pathAlgorithm2(mapMaker.startTile, mapMaker.endTile, grid.tiles)
-                mapMaker.findPath(pathFinder)
-                mapMaker.traversePath()
+
+                #mapMaker.findPath(pathFinder)
+                #mapMaker.traversePath()
+
+                pathFinder.dikjstra(mapMaker.startTile, mapMaker.endTile, grid.tiles, MAPWIDTH, MAPHEIGHT)
                 hasRun = True
             if event.key == K_DELETE:
                 grid.reset()
