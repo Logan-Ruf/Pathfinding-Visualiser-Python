@@ -21,3 +21,4 @@ Set up imports in the following order:
 Add more things to the To Do list. Lol
 
 Logan = create an code to implement dijkstra'a algorithm
+      DEBUG DIJKSTA ALGORTHM HOLY SHIT
