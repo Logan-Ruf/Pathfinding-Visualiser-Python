@@ -7,8 +7,8 @@ from classes.positiondata import *
 
 #global parameters
 TILESIZE = 20
-MAPWIDTH = 40
-MAPHEIGHT = 40
+MAPWIDTH = 20
+MAPHEIGHT = 20
 
 #initialize pygame
 pygame.init()

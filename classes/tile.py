@@ -74,7 +74,7 @@ class Tile():
                 self.distance = testDistance
                 self.parent = testParent
                 print("TILE COLOR CHANGED")
-                self.newColor((5*testDistance,10*testDistance,255-testDistance*10))
+                self.newColor((0,255-testDistance,testDistance))
                 return True
             else:
                 return False
@@ -82,5 +82,5 @@ class Tile():
             self.distance = testDistance
             self.parent = testParent
             print("TILE COLOR CHANGED")
-            self.newColor((5*testDistance,10*testDistance,255-testDistance*10))
+            self.newColor((0,255-testDistance,testDistance))
             return True

@@ -98,8 +98,20 @@ class PathFinder2D:
         unvisitedNodes = []
 
         while True:
+
             x, y = currentPos
             currentDistance = gridArray[x][y].distance + 1
+
+            #Check to see if you have found the end. If you have draw the line and break
+            if gridArray[x][y].isEnd == True:
+                onPath = currentPos
+                while onPath != None:
+                    gridArray[onPath[0]][onPath[1]].newColor((100,100,100))
+                    onPath = gridArray[onPath[0]][onPath[1]].parent
+                    pygame.display.update()
+                    time.sleep(.1)
+                break
+
             #make sure neighboring tiles are in bounds
             #then if at shortest distance add it to unvisitedNodes
             if x - 1 >= 0:
@@ -132,4 +144,7 @@ class PathFinder2D:
 
             pygame.display.update()
             time.sleep(.05)
+
+
+
             currentPos = unvisitedNodes.pop(0)
